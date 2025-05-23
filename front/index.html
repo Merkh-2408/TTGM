@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角洲行动 - 摸金系统</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffcc00;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        #search-button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        #search-button:hover {
+            background-color: #ffd700;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+        }
+
+        #loading {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 5px solid rgba(255, 204, 0, 0.3);
+            border-top: 5px solid #ffcc00;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #article-details {
+            display: none;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .detail-item {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        #quality {
+            font-weight: bold;
+            text-shadow: 0 0 5px currentColor;
+        }
+
+        #error-message {
+            display: none;
+            color: #ff4444;
+            margin-top: 20px;
+        }
+
+        .reveal-animation {
+            animation: reveal 1s ease-out;
+        }
+
+        @keyframes reveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>三角洲行动 - 摸金系统</h1>
+
+        <div class="search-container">
+            <button id="search-button">开始搜索</button>
+        </div>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>正在搜索物品...</p>
+        </div>
+
+        <div id="error-message"></div>
+
+        <div id="article-details">
+            <div class="detail-item" id="name">名称: </div>
+            <div class="detail-item" id="quality">品质: </div>
+            <div class="detail-item" id="space">空间: </div>
+            <div class="detail-item" id="price">价格: </div>
+            <div class="detail-item" id="type">类型: </div>
+        </div>
+    </div>
+
+    <script src="front.js"></script>
+    <script>
+        // 当页面加载完成时自动重定向到正确的URL
+        if (window.location.pathname.includes('/front/')) {
+            window.location.href = window.location.href.replace('/front/', '/static/');
+        }
+    </script>
+</body>
+
+</html>

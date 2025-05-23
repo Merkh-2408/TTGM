@@ -1,0 +1,7 @@
+<div>
+    <p id="space"></p>
+    <p id="name"></p>
+    <p id="quality"></p>
+    <p id="price"></p>
+    <button id="yourButtonId">Fetch Article</button>
+</div>
