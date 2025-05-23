@@ -1,9 +1,5 @@
 package modsls
 
-import "gorm.io/gorm"
-
-var DB *gorm.DB
-
 // 品质
 type Quality string
 
@@ -20,17 +16,17 @@ const (
 func GetQualityWeight(q Quality) float64 {
 	switch q {
 	case Red:
-		return 0.01  // 1%
+		return 0.01 // 1%
 	case Gold:
-		return 0.04  // 4%
+		return 0.04 // 4%
 	case Purple:
-		return 0.15  // 15%
+		return 0.15 // 15%
 	case Blue:
-		return 0.25  // 25%
+		return 0.25 // 25%
 	case Green:
-		return 0.30  // 30%
+		return 0.30 // 30%
 	case White:
-		return 0.25  // 25%
+		return 0.25 // 25%
 	default:
 		return 0
 	}
@@ -42,22 +38,13 @@ type Space struct {
 	Height int `gorm:"not null"`
 }
 
-// 类型 分为战备类和收集类
-type Type int
-
-const (
-	Collection Type = iota + 1
-	Consumable
-	war
-)
-
 // 物品的基础属性
 type Articles struct {
-	Id      int
-	Name    string  `gorm:"not null"`
-	Quality Quality `gorm:"not null"`
-	Space   Space   `gorm:"embedded"` // 嵌入Space结构体
-	Weight  float32
-	Price   int `gorm:"null"`
-	Type    Type
+	ID      int     `json:"id" gorm:"primaryKey"`
+	Name    string  `json:"name" gorm:"not null"`
+	Quality Quality `json:"quality" gorm:"not null"`
+	Space   Space   `json:"space" gorm:"embedded"` // 嵌入Space结构体
+	Weight  float64 `json:"weight"`
+	Price   int     `json:"price" gorm:"null"`
+	Type    string  `json:"type" gorm:"not null"`
 }
